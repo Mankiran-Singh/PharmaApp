@@ -1,0 +1,22 @@
+  <p>
+    <mat-toolbar class="custom-toolbar">
+    <span><img src="../../../assets/1c997411219b-Group96-1647524843767.avif" width="50" height="50"></span>
+    <span class="example-spacer"></span>
+    <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>search</mat-icon>
+    </button> -->
+    <div class="box">
+        <mat-icon>search</mat-icon>
+        <input type="text" name="">
+    </div>
+    <button mat-button>SignUp / Login</button>
+    <button mat-button [matMenuTriggerFor]="menu"> 
+     <img src="../../../assets/1c997411219b-Group96-1647524843767.avif" width="40" height="40">   
+     <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Logout <mat-icon>logout</mat-icon></button>
+        <!-- <button mat-menu-item>Item 2</button> -->
+      </mat-menu>
+  </mat-toolbar>
+  </p>

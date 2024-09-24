@@ -1,0 +1,59 @@
+<p>
+    <mat-toolbar class="custom-toolbar">
+    <span><img src="../../../assets/1c997411219b-Group96-1647524843767.avif" width="50" height="50"></span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button (click)="openSearchDialog()"><mat-icon>search</mat-icon></button>
+    <button mat-button (click)="login()">Login</button>
+    <button mat-button [matMenuTriggerFor]="menu"> 
+     <img src="../../../assets/1c997411219b-Group96-1647524843767.avif" width="40" height="40">   
+     <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Logout <mat-icon>logout</mat-icon></button>
+        <!-- <button mat-menu-item>Item 2</button> -->
+      </mat-menu>
+  </mat-toolbar>
+  
+</p>
+<div class="dashboard-container">
+    <mat-grid-list cols="2" rowHeight="200px" gutterSize="16px">
+      <!-- Loop over the analytics array and display each card -->
+      <mat-grid-tile *ngFor="let item of analytics">
+        <mat-card class="dashboard-card" [color]="item.color">
+          <mat-card-header>
+            <mat-icon [color]="item.color">{{ item.icon }}</mat-icon>
+            <mat-card-title>{{ item.title }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <h2>{{ item.value }}</h2>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  
+    <!-- Line Chart -->
+    <div class="chart-container">
+      <h3>Sales and Orders (Line Chart)</h3>
+      <canvas baseChart
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType">
+      </canvas>
+    </div>
+  
+    <!-- Bar Chart -->
+    <div class="chart-container">
+      <h3>Sales and Orders (Bar Chart)</h3>
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>
+  
