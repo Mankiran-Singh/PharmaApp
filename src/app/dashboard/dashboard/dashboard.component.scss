@@ -1,32 +1,82 @@
 @use '@angular/material' as mat;
 
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .custom-toolbar {
-   background-color:var(--bs-cyan);
+  background-color: var(--bs-cyan);
 }
 
-.mat-mdc-button svg, .mat-mdc-button img {
-    width: var(--mdc-icon-button-icon-size, 30px);
-    height: var(--mdc-icon-button-icon-size, 30px);
-    border: 2px solid var(--bs-primary-text-emphasis);
-    border-radius:50px;
-}
-.mat-mdc-button>.mat-icon{
-    font-size: 1.5em;
+.mat-menu-item {
+  cursor: pointer;
 }
 
-.mat-mdc-form-field{
-    margin-top: 24px;
-    height: inherit;
+.mat-mdc-button svg,
+.mat-mdc-button img {
+  width: var(--mdc-icon-button-icon-size, 30px);
+  height: var(--mdc-icon-button-icon-size, 30px);
+  border: 2px solid var(--bs-primary-text-emphasis);
+  border-radius: 50px;
+}
+
+.mat-mdc-button > .mat-icon {
+  font-size: 1.5em;
+}
+
+.mat-mdc-form-field {
+  margin-top: 24px;
+  height: inherit;
 }
 
 .custom-dialog-container {
-    border-radius: 8px; /* Optional rounded corners */
-    overflow: hidden; /* Prevent overflow */
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Optional shadow */
-  }
-  
-  
+  border-radius: 8px; /* Optional rounded corners */
+  overflow: hidden; /* Prevent overflow */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Optional shadow */
+}
+
+.dashboard-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.dashboard-card-content {
+  text-align: center;
+  // flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
+  justify-content: center;
+}
+
+mat-grid-list{
+    height: auto !important;
+}
+mat-grid-tile{
+    left: 0px;
+    width: 100%;
+    top: 0px;
+    height: auto;
+}
+mat-card{
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    margin: 12px;
+    mat-card-content{
+      padding-bottom: 30px !important;
+      padding-left: 50px !important;
+        .add-patients{
+            display: flex;
+        }
+    }
+}
+mat-mdc-card-content:last-child {
+  padding-bottom: 30px !important;
+}
+.chart-container {
+  width: 100%;
+  height: 100%;
+}

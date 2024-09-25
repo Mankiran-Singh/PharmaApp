@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SpinnerInterceptorService } from '../services/interceptors/spinner-interceptor.service';
-import { NavbarComponent } from './navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar'
 import {MatIconModule} from '@angular/material/icon'
 import {MatButtonModule} from '@angular/material/button'
@@ -17,12 +15,21 @@ import { SearchDialogComponent } from './search-dialog/search-dialog.component'
 import {MatDialogModule} from '@angular/material/dialog'
 import {MatCardModule} from '@angular/material/card'
 import {MatGridListModule} from '@angular/material/grid-list'
-
+import { ChartsModule } from 'ng2-charts';
+import { AddPatientsDialogComponent } from './add-patients-dialog/add-patients-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { ViewMedicineComponent } from './view-medicine/view-medicine.component';
+import { OrdersComponent } from './orders/orders.component';
 @NgModule({
   declarations: [
     DashboardComponent,
-    NavbarComponent,
-    SearchDialogComponent
+    SearchDialogComponent,
+    AddPatientsDialogComponent,
+    ViewMedicineComponent,
+    OrdersComponent
   ],
   imports: [
     CommonModule,
@@ -32,12 +39,17 @@ import {MatGridListModule} from '@angular/material/grid-list'
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatInputModule,
     MatMenuModule,
     MatTableModule,
     MatDialogModule,
     MatCardModule,
     MatGridListModule,
-    
+    ChartsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptorService, multi: true }],
 })

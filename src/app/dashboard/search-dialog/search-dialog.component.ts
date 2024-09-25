@@ -1,8 +1,9 @@
-import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component, ElementRef, Inject, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, filter, fromEvent, switchMap } from 'rxjs';
 import { HttpRequestService } from 'src/app/services/http-requests/http-request.service';
+import { ViewMedicineComponent } from 'src/app/dashboard/view-medicine/view-medicine.component';
 interface Medicine {
   available_for_patient: string;
   content: string;
@@ -22,29 +23,22 @@ interface Medicine {
 @Component({
   selector: 'app-search-dialog',
   templateUrl: './search-dialog.component.html',
-  styleUrls: ['./search-dialog.component.scss']
+  styleUrls: ['./search-dialog.component.scss'],
+  encapsulation:ViewEncapsulation.Emulated
 })
 export class SearchDialogComponent {
   constructor(private readonly httpService:HttpRequestService,private router:Router,
     public dialogRef: MatDialogRef<SearchDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public dialogData:any,
+    @Inject(MAT_DIALOG_DATA) public dialogData:any,private dialog:MatDialog
   ){}
   displayedColumns: string[] = [
     'content',
-    // 'discontinued',
-    // 'dosage_type',
-    // 'gst_percentage',
     'manufacturer_name',
     'medicine_name',
     'medicine_type',
-    // 'mrp',
     'packing_size',
     'price',
-    'Preview',
-    'Order',
-    // 'schedule_type',
-    // 'size',
-    // 'available_for_patient',
+    'Preview'
   ];
   data = [
     {
@@ -54,7 +48,7 @@ export class SearchDialogComponent {
       dosage_type: "",
       gst_percentage: "5",
       manufacturer_name: "Unisharp Pharmaceuticals",
-      medicine_id: "vDsnSH4QSC426FMYtFKNDw==",
+      medicine_id: '[gv0GokYn9w4zFL51eouS2g==]',
       medicine_name: "Ltk",
       medicine_type: "otc",
       mrp: "324",
@@ -78,7 +72,7 @@ export class SearchDialogComponent {
           switchMap(async () => this.search(this.input.nativeElement.value)) // API call
         )
         .subscribe(response => {
-          // console.log('API Response:', response);
+          
         });
     }
   
@@ -87,15 +81,15 @@ export class SearchDialogComponent {
         if (res && res.data && res.data.result && res.data.result.length > 0) {
           this.data = res.data.result;
         } else {
-          this.data = []; // Set data to an empty array if no results
+          this.data = []; 
         }
       });
     }
     
   onPreview(element: any){
-    console.log(element)
+    const dialogRef = this.dialog.open(ViewMedicineComponent, {
+       data:{"medicine_id":element.id}
+    });
   }
-  onPlaceOrder(element: any){
-    console.log(element)
-  }
+  
 }

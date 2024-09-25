@@ -1,0 +1,24 @@
+<div class="product-card">
+    <div class="image-container">
+        <img [src]="medicine?.medicine_image" alt="Morning Set">
+        <span class="favorite-star">★</span>
+    </div>
+    <div class="product-info">
+        <h2>{{medicine?.content}}</h2>
+        <p>{{medicine?.alcohol}}</p>
+        <div class="tags">
+            <span class="tag">{{medicine?.packing}}</span>
+            <span class="tag">{{medicine?.pack_size}}</span>
+            <span class="tag">{{medicine?.medicine_category}}</span>
+        </div>
+        <div class="price-order">
+            <span class="price">{{medicine?.mrp}}Rs</span>
+            <div class="qty-input">
+                <button class="qty-count qty-count--minus" data-action="minus" type="button" (click)="decreaseQuantity()">-</button>
+                <input class="product-qty" type="number" name="product-qty" min="0" max="10" [(ngModel)]="quantity">
+                <button class="qty-count qty-count--add" data-action="add" type="button" (click)="increaseQuantity()">+</button>
+              </div>              
+            <button class="order-button" (click)="buy(medicine,quantity)">Order Now</button>
+        </div>
+    </div>
+</div>

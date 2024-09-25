@@ -1,0 +1,16 @@
+.mat-mdc-form-field{
+   margin: 6px;
+   height: 70px;
+}
+  form{
+    display: grid;
+    button{
+        width: auto;
+    }
+  }
+  header{
+    text-align: center;
+    height: 35px;
+    background-color: var(--bs-cyan);
+    color: var(--bs-body-bg);
+  }

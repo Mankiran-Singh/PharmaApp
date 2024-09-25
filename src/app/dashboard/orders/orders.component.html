@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="d-flex justify-content-center row">
+        <div>
+            <div class="rounded">
+                <div class="table-responsive table-borderless">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Content</th>
+                                <th>MRP</th>
+                                <th>Quantity</th>
+                                <th>Size</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-body" *ngIf="ordersArray.length > 0; else noOrders">
+                            <tr class="cell-1" *ngFor="let orders of ordersArray">
+                                <td>{{ orders.content }}</td>
+                                <td>{{ orders.mrp }}</td>
+                                <td><span class="badge badge-success">{{ orders.quantity }}</span></td>
+                                <td>{{ orders.pack_size }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ng-template #noOrders>
+                        <h1>No Orders yet</h1>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
