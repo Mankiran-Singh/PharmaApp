@@ -94,6 +94,10 @@ public barChartData: any[] = [
     this.router.navigate(['/auth/login'])
   }
 
+  logout(){
+    this.router.navigate(['/auth/login']) 
+  }
+
   openSearchDialog(){
     const dialogRef = this.dialog.open(SearchDialogComponent, {
       width: '1000px',  // Set fixed width
