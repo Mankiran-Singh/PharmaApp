@@ -11,6 +11,7 @@ import { HttpRequestService } from 'src/app/services/http-requests/http-request.
 })
 export class AddPatientsDialogComponent {
 
+
   userForm = new FormGroup({
     mobile: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]),
     first_name: new FormControl('', Validators.required),
@@ -25,15 +26,15 @@ export class AddPatientsDialogComponent {
 
     onSubmit() {
       if (this.userForm.valid) {
-        this.httpService.addPatient(this.userForm.value).pipe(
-          this.toast.observe({
-            loading: 'Please wait...',
-            success: 'Patient Added Successfully!',
-            error: 'Invalid Details',
-          })
-        ).subscribe(
+        this.httpService.addPatient(this.userForm.value).subscribe(
           (res:any)=>{
-            this.dialogRef.close(this.userForm.value);
+            console.log(res)
+            if(res.status_code==="1"){
+                this.toast.success('Patient registered successfully')
+                this.dialogRef.close(this.userForm.value);
+            }else{
+                this.toast.error('This Mobile Number already exists')
+            }
           }
         );
       }

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="ordersArray.length>0; else noOrders">
     <div class="d-flex justify-content-center row">
         <div>
             <div class="rounded">
@@ -13,20 +13,20 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody class="table-body" *ngIf="ordersArray.length > 0; else noOrders">
+                        <tbody class="table-body">
                             <tr class="cell-1" *ngFor="let orders of ordersArray">
-                                <td>{{ orders.content }}</td>
-                                <td>{{ orders.mrp }}</td>
-                                <td><span class="badge badge-success">{{ orders.quantity }}</span></td>
-                                <td>{{ orders.pack_size }}</td>
+                                <td>{{ orders?.content }}</td>
+                                <td>{{ orders?.mrp }}</td>
+                                <td><span class="badge badge-success">{{ orders?.quantity }}</span></td>
+                                <td>{{ orders?.pack_size }}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <ng-template #noOrders>
-                        <h1>No Orders yet</h1>
-                    </ng-template>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<ng-template #noOrders>
+    <h1>No Orders yet</h1>
+</ng-template>

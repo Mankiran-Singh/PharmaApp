@@ -11,12 +11,17 @@
     <span class="example-spacer"></span>
     
     <div class="box">
-     <button mat-icon-button (click)="checkOrders()"><mat-icon>add_shopping_cart</mat-icon></button>
+     <button mat-icon-button (click)="checkOrders()" matTooltip="Items added to cart" matTooltipPosition="below">
+      <mat-icon>add_shopping_cart</mat-icon>
+     </button>
     </div>
-    <button mat-icon-button (click)="openSearchDialog()">
+    <button mat-icon-button (click)="openSearchDialog()" matTooltip="Search Medicines" matTooltipPosition="below">
       <mat-icon>search</mat-icon>
     </button>
-    <button mat-button (click)="login()">Login</button>
+    <button mat-button *ngIf="!token; else loggedIn" (click)="login()">Login</button>
+    <ng-template #loggedIn>
+
+    </ng-template>
   
     <mat-menu #salesMenu="matMenu">
       <button mat-menu-item>View Sales</button>

@@ -22,18 +22,14 @@ export class LoginComponent {
   login(){
     if(this.loginForm.valid){
       const {mobile,password}=this.loginForm.value
-       this.httpService.login(mobile,password).pipe(
-         this.toast.observe({
-           loading: 'Please wait...',
-           success: 'Login successful!',
-           error: 'Invalid Details',
-         })
-       ).subscribe(
-         (res:any)=>{
-           console.log("====>",res)
-           this.router.navigate(['/dashboard'])
-         }
-       );
+      if(mobile==='7777777777' && password==='test@api'){
+          localStorage.setItem('token','bfuebrfuebfubfbwifbwigdwdwd')
+          this.loginForm.reset();
+          this.router.navigate(['/dashboard'])
+          this.toast.success('Login Successful!')
+        }else{
+          this.toast.error('Invalid Details')
+        }
       }else{
         this.showErrors=true;
       }

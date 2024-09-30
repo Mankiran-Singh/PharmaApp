@@ -23,6 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { ViewMedicineComponent } from './view-medicine/view-medicine.component';
 import { OrdersComponent } from './orders/orders.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -49,6 +50,7 @@ import { OrdersComponent } from './orders/orders.component';
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
+    MatTooltipModule,
     ReactiveFormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptorService, multi: true }],

@@ -10,9 +10,18 @@ import { EventService } from 'src/app/services/events/event.service';
 export class OrdersComponent {
 
   ordersArray:Array<any>=[]
-  constructor(private eventService: EventService,public dialogRef: MatDialogRef<OrdersComponent>,
-    @Inject(MAT_DIALOG_DATA) public dialogData:any){
-      this.ordersArray.push(this.dialogData)
+  constructor(
+    private eventService: EventService,
+    public dialogRef: MatDialogRef<OrdersComponent>,
+    @Inject(MAT_DIALOG_DATA) public dialogData: any
+  ) {
+    if (this.dialogData && Array.isArray(this.dialogData)) {
+      this.ordersArray = this.dialogData;
+    } else if (this.dialogData && typeof this.dialogData === 'object') {
+      // Convert object to an array containing the object
+      this.ordersArray = [this.dialogData];
     }
+  }
+  
   
 }

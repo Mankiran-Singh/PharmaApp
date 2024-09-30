@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { HttpRequestService } from 'src/app/services/http-requests/http-request.service';
@@ -15,7 +15,10 @@ import { ViewMedicineComponent } from '../view-medicine/view-medicine.component'
   encapsulation:ViewEncapsulation.Emulated
 })
 export class DashboardComponent {
-constructor(private readonly httpService:HttpRequestService,private router:Router,public dialog: MatDialog){}
+  token:string | null | undefined
+  constructor(private readonly httpService:HttpRequestService,private router:Router,public dialog: MatDialog){
+    this.token=localStorage.getItem('token')
+  }
 title!: string
 analytics = [
   {
@@ -95,6 +98,7 @@ public barChartData: any[] = [
   }
 
   logout(){
+    localStorage.clear()
     this.router.navigate(['/auth/login']) 
   }
 
