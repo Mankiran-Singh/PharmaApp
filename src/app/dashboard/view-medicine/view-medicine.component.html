@@ -1,7 +1,7 @@
 <div class="product-card">
     <div class="image-container">
         <img [src]="medicine?.medicine_image" alt="Morning Set">
-        <span class="favorite-star">★</span>
+        <span class="favorite-star"><button mat-icon-button matTooltip="Add to Cart" (click)="addToCart(medicine,quantity)"><mat-icon>shopping_cart</mat-icon></button></span>
     </div>
     <div class="product-info">
         <h2>{{medicine?.content}}</h2>
@@ -18,7 +18,7 @@
                 <input class="product-qty" type="number" name="product-qty" min="0" max="10" [(ngModel)]="quantity">
                 <button class="qty-count qty-count--add" data-action="add" type="button" (click)="increaseQuantity()">+</button>
               </div>              
-            <button class="order-button" (click)="buy(medicine,quantity)">Order Now</button>
+            <button class="order-button" (click)="order(medicine,quantity)">Order Now</button>
         </div>
     </div>
 </div>

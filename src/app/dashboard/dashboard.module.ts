@@ -24,13 +24,15 @@ import { MatInputModule } from '@angular/material/input';
 import { ViewMedicineComponent } from './view-medicine/view-medicine.component';
 import { OrdersComponent } from './orders/orders.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { PlaceOrderComponent } from './place-order/place-order.component';
 @NgModule({
   declarations: [
     DashboardComponent,
     SearchDialogComponent,
     AddPatientsDialogComponent,
     ViewMedicineComponent,
-    OrdersComponent
+    OrdersComponent,
+    PlaceOrderComponent
   ],
   imports: [
     CommonModule,

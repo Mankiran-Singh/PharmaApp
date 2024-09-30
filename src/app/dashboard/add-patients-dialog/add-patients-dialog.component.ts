@@ -11,7 +11,6 @@ import { HttpRequestService } from 'src/app/services/http-requests/http-request.
 })
 export class AddPatientsDialogComponent {
 
-
   userForm = new FormGroup({
     mobile: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]),
     first_name: new FormControl('', Validators.required),

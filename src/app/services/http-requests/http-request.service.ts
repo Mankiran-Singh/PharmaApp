@@ -56,4 +56,24 @@ export class HttpRequestService {
     return this.http.post(url,formData)
   }
 
+  placeOrder(body:any){
+    const formData = new FormData();
+    formData.append('apikey', apiKey);
+    const {items,patient_name,mobile,address,city,state,zipcode}=body
+    formData.append('items', JSON.stringify(items));
+    // formData.append('items', items);
+    formData.append('delivery_type','delivery');
+    formData.append('patient_name', patient_name);
+    formData.append('mobile', mobile);
+    formData.append('address',address);
+    formData.append('city', city);
+    formData.append('state', state);
+    formData.append('zipcode',zipcode);
+    formData.append('auto-assign','true');
+    formData.append('chemist_id','pFSLzbwQTH8LY23N2IlczQ==');
+    formData.append('latitude','12.970612');
+    formData.append('longitude','77.6382433');
+     const url = `${API_URL}orders/place_order`
+     return this.http.post(url,formData)
+  }
 }

@@ -5,6 +5,7 @@ import { EventService } from 'src/app/services/events/event.service';
 import { HttpRequestService } from 'src/app/services/http-requests/http-request.service';
 import { OrdersComponent } from '../orders/orders.component';
 import { HotToastService } from '@ngneat/hot-toast';
+import { PlaceOrderComponent } from '../place-order/place-order.component';
 
 @Component({
   selector: 'app-view-medicine',
@@ -40,14 +41,14 @@ export class ViewMedicineComponent {
     }
   }
 
-  buy(medicine: any, quantity: number) {
+  addToCart(medicine: any, quantity: number) {
     const updatedMedicine = {
       ...medicine, 
       quantity: quantity
     };
 
   if(updatedMedicine){
-    this.toast.success('Order Placed')
+    this.toast.success('Added to cart')
     this.dialogRef.close()
     const dialogRef = this.dialog.open(OrdersComponent, {
       width: '400px',
@@ -65,5 +66,20 @@ export class ViewMedicineComponent {
     this.toast.error("Something went wrong")
   }
 }
+
+    order(medicine:any,quantity:any){
+      this.dialogRef.close()
+      const dialogRef = this.dialog.open(PlaceOrderComponent, {
+        width: '500px',
+        height: '500px',
+        // position: { top: '82px', left: '65%' },
+        panelClass: 'custom-place-order-container',
+        data: {
+           medicine_name:medicine.medicine_name,
+           medicine_id:medicine.id,
+           quantity
+        }
+      });
+    }
   
 }

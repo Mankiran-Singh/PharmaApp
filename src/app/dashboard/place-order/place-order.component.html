@@ -1,0 +1,71 @@
+<header>
+    <h1>Place Order</h1>
+  </header>
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit(data)">
+    
+    <!-- Items Field -->
+    <mat-form-field appearance="fill">
+      <mat-label>Items</mat-label>
+      <input matInput formControlName="items" placeholder="Enter items" required />
+      <mat-error *ngIf="orderForm.get('items')?.invalid && orderForm.get('items')?.touched">
+        Items are required.
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- Patient Name Field -->
+    <mat-form-field appearance="fill">
+      <mat-label>Patient Name</mat-label>
+      <input matInput formControlName="patient_name" placeholder="Enter patient name" required />
+      <mat-error *ngIf="orderForm.get('patient_name')?.invalid && orderForm.get('patient_name')?.touched">
+        Patient name is required.
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- Mobile Field -->
+    <mat-form-field appearance="fill">
+      <mat-label>Mobile</mat-label>
+      <input matInput formControlName="mobile" placeholder="Enter mobile number" required />
+      <mat-error *ngIf="orderForm.get('mobile')?.invalid && orderForm.get('mobile')?.touched">
+        Mobile number must be 10 digits.
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- Address Field -->
+    <mat-form-field appearance="fill">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" placeholder="Enter address" required />
+      <mat-error *ngIf="orderForm.get('address')?.invalid && orderForm.get('address')?.touched">
+        Address is required.
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- City Field -->
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <input matInput formControlName="city" placeholder="Enter city" required />
+      <mat-error *ngIf="orderForm.get('city')?.invalid && orderForm.get('city')?.touched">
+        City is required.
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- State Field -->
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <input matInput formControlName="state" placeholder="Enter state" required />
+      <mat-error *ngIf="orderForm.get('state')?.invalid && orderForm.get('state')?.touched">
+        State is required.
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- Zip Code Field -->
+    <mat-form-field appearance="fill">
+      <mat-label>Zip Code</mat-label>
+      <input matInput formControlName="zipcode" placeholder="Enter zip code" required />
+      <mat-error *ngIf="orderForm.get('zipcode')?.invalid && orderForm.get('zipcode')?.touched">
+        Zip code is required.
+      </mat-error>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit" [disabled]="orderForm.invalid">Submit</button>
+  </form>
+  
